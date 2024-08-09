@@ -5,6 +5,9 @@ import { config } from 'dotenv';
 import cors from 'cors';
 import morgan from 'morgan';
 import errorMiddleware from './middlewares/error.middleware.js';
+import dotenv from 'dotenv';
+dotenv.config();
+
 
 const app = express();
 

@@ -115,69 +115,6 @@ export const verifySubscription = asyncHandler(async (req, res, next) => {
  * @ROUTE @POST {{URL}}/api/v1/payments/unsubscribe
  * @ACCESS Private (Logged in user only)
  */
-// export const cancelSubscription = asyncHandler(async (req, res, next) => {
-//   const { id } = req.user;
-
-//   // Finding the user
-//   const user = await User.findById(id);
-//   console.log("User fetched: ", user);
-
-//   // Checking the user role
-//   if (user.role === 'ADMIN') {
-//     return next(
-//       new AppError('Admin cannot cancel subscription', 400)
-//     );
-//   }
-
-//   // Finding subscription ID from user
-//   const subscriptionId = user.subscription.id;
-//   console.log("Subscription ID: ", subscriptionId);
-
-//   if (!subscriptionId) {
-//     return next(new AppError('No subscription found for this user', 404));
-//   }
-
-//   try {
-//     // Fetch the subscription details from Razorpay
-//     const subscription = await razorpay.subscriptions.fetch(subscriptionId);
-//     console.log("Fetched subscription status from Razorpay: ", subscription.status);
-
-//     // Update the local subscription status
-//     user.subscription.status = subscription.status;
-//     await user.save();
-//     console.log("Updated local subscription status: ", user.subscription.status);
-
-//     // Check if the subscription is in a cancellable status
-//     if (subscription.status === 'completed') {
-//       return next(new AppError('Subscription is not cancellable in completed status.', 400));
-//    }
-
-//     // Cancel the subscription using Razorpay
-//     const canceledSubscription = await razorpay.subscriptions.cancel(subscriptionId);
-//     console.log("Canceled subscription status from Razorpay: ", canceledSubscription.status);
-
-//     // Manually update the subscription status on the user account
-//     user.subscription.status = canceledSubscription.status;
-//     console.log("Updated user subscription status after cancellation: ", user.subscription.status);
-
-//     // Saving the user object
-//     await user.save();
-//     console.log("User saved: ", user);
-
-//     // Send the response
-//     res.status(200).json({
-//       success: true,
-//       message: 'Subscription canceled successfully',
-//     });
-
-//   } catch (error) {
-//     // Handling Razorpay errors
-//     console.error("Error from Razorpay: ", error);
-//     return next(new AppError(error.error.description, error.statusCode));
-//   }
-// });
-
-
 export const cancelSubscription = asyncHandler(async (req, res, next) => {
   const { id } = req.user;
 
@@ -255,12 +192,6 @@ export const cancelSubscription = asyncHandler(async (req, res, next) => {
     return next(new AppError(message, statusCode));
   }
 });
-
-
-
-
-
-
 
 
 /**
