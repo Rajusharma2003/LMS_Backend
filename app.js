@@ -22,6 +22,7 @@ app.use(
     credentials: true,
   })
 );
+
 app.use(morgan('dev'));
 app.use(cookieParser());
 
@@ -36,15 +37,15 @@ import courseRoutes from './routes/course.routes.js';
 import paymentRoutes from './routes/payment.routes.js';
 import miscRoutes from './routes/miscellaneous.routes.js';
 
-// app.use('/api/v1/user', userRoutes);
-// app.use('/api/v1/courses', courseRoutes);
-// app.use('/api/v1/payments', paymentRoutes);
-// app.use('/api/v1', miscRoutes);
+app.use('/api/v1/user', userRoutes);
+app.use('/api/v1/courses', courseRoutes);
+app.use('/api/v1/payments', paymentRoutes);
+app.use('/api/v1', miscRoutes);
 
-app.use('/user', userRoutes);
-app.use('/courses', courseRoutes);
-app.use('/payments', paymentRoutes);
-app.use( miscRoutes);
+// app.use('/user', userRoutes);
+// app.use('/courses', courseRoutes);
+// app.use('/payments', paymentRoutes);
+// app.use( miscRoutes);
 
 // Default catch all route - 404
 app.all('*', (_req, res) => {
