@@ -5,7 +5,8 @@ import cloudinary from 'cloudinary';
 
 import asyncHandler from '../middlewares/asyncHandler.middleware.js';
 import Course from '../models/course.model.js';
-import AppError from '../utils/AppError.js';
+import AppError from '../utils/AppErrors.js';
+
 
 /**
  * @ALL_COURSES
