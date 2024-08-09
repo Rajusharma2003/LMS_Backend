@@ -4,7 +4,7 @@ import fs from 'fs/promises';
 import cloudinary from 'cloudinary';
 
 import asyncHandler from '../middlewares/asyncHandler.middleware.js';
-import AppError from '../utils/AppError.js';
+import AppError from '../utils/AppErrors.js';
 import User from '../models/user.model.js';
 import sendEmail from '../utils/sendEmail.js';
 
